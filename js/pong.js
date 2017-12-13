@@ -68,41 +68,41 @@ $( document ).ready(function() {
     loadInstructions();
 
     // set initial values
-    userPaddle['height'] = 80;
-    userPaddle['move'] = 0;
-    userPaddle['top'] = 260;
-    userPaddle['speed'] = 10;
+    userPaddle.height = 80;
+    userPaddle.move = 0;
+    userPaddle.top = 260;
+    userPaddle.speed = 10;
 
-    aiPaddle['height'] = 80;
-    aiPaddle['destination'] = 0;
-    aiPaddle['top'] = 260;
-    aiPaddle['speed'] = 3.3;
-    aiPaddle['moveNow'] = false;
+    aiPaddle.height = 80;
+    aiPaddle.destination = 0;
+    aiPaddle.top = 260;
+    aiPaddle.speed = 3.3;
+    aiPaddle.moveNow = false;
 
     // ball data
-    ball['height'] = 20
-    ball['top'] = 290;
-    ball['left'] = 540;
-    ball['moving'] = false;
-    ball['speed'] = 10;
-    ball['directionX'] = -1 * ball['speed'];
-    ball['directionY'] = (Math.random() < 0.5 ? -1 : 1) * ball['speed'];
+    ball.height = 20
+    ball.top = 290;
+    ball.left = 540;
+    ball.moving = false;
+    ball.speed = 10;
+    ball.directionX = -1 * ball.speed;
+    ball.directionY = (Math.random() < 0.5 ? -1 : 1) * ball.speed;
 
     // set initial metrics
-    gameMetrics['userScore'] = 0;
-    gameMetrics['aiScore'] = 0;
+    gameMetrics.userScore = 0;
+    gameMetrics.aiScore = 0;
 
-    gameMetrics['upArrow'] = false;
-    gameMetrics['downArrow'] = false;
-    gameMetrics['recentPress'] = 0;
+    gameMetrics.upArrow = false;
+    gameMetrics.downArrow = false;
+    gameMetrics.recentPress = 0;
 
-    gameMetrics['boardTop'] = 0;
-    gameMetrics['boardBottom'] = 600;
+    gameMetrics.boardTop = 0;
+    gameMetrics.boardBottom = 600;
 
-    gameMetrics['boardLeft'] = 0;
-    gameMetrics['boardRight'] = 1100;
+    gameMetrics.boardLeft = 0;
+    gameMetrics.boardRight = 1100;
 
-    gameMetrics['changingUI'] = false;
+    gameMetrics.changingUI = false;
 
 });
 
@@ -158,15 +158,15 @@ function startGame()
 function updateGame()
 {
     // paddle movement
-    userPaddle['move'] = getUserPaddleMove();
-    userPaddle['top'] += userPaddle['move'];
-    document.getElementById('userPaddle').style.top = (userPaddle['top']) + 'px';
+    userPaddle.move = getUserPaddleMove();
+    userPaddle.top += userPaddle.move;
+    document.getElementById('userPaddle').style.top = (userPaddle.top) + 'px';
 
     // ball movement
-    if(ball['moving']){ moveBall(); }
+    if(ball.moving){ moveBall(); }
 
     // ai paddle move
-    if(aiPaddle['moveNow']){ moveAIPaddle(); }
+    if(aiPaddle.moveNow){ moveAIPaddle(); }
 }
 
 
@@ -180,19 +180,19 @@ function updateGame()
 */
 $(document).keydown(function(e) {
     if (e.which === 38) { // up arrow
-        gameMetrics['upArrow'] = true;
-        gameMetrics['recentPress'] = 38;
+        gameMetrics.upArrow = true;
+        gameMetrics.recentPress = 38;
     }
     if (e.which === 40) { // down arrow
-        gameMetrics['downArrow'] = true;
-        gameMetrics['recentPress'] = 40;
+        gameMetrics.downArrow = true;
+        gameMetrics.recentPress = 40;
     }
     if(e.which === 32)
     {
         // start ball in a random spot
         var randomSet = (Math.random() < 0.5 ? -1 : 1) * Math.floor((Math.random() * 80) + 0);
         $('#ball').animate({top: '+='+randomSet}, function(){
-            ball['moving'] = !(ball['moving']);
+            ball.moving = !(ball.moving);
         });
     }
 });
@@ -200,10 +200,10 @@ $(document).keydown(function(e) {
 // up or down arrow key is released
 $(document).keyup(function(e) {
     if (e.which === 38) {
-        gameMetrics['upArrow'] = false;
+        gameMetrics.upArrow = false;
     }
     if (e.which === 40) {
-        gameMetrics['downArrow'] = false;
+        gameMetrics.downArrow = false;
     }
 });
 
@@ -219,43 +219,43 @@ $(document).keyup(function(e) {
 function getUserPaddleMove()
 {
     // up arrow only
-    if(gameMetrics['upArrow'] && !(gameMetrics['downArrow']))
+    if(gameMetrics.upArrow && !(gameMetrics.downArrow))
     {
         if(paddleCanMove("up"))
         {
-            return -1 * userPaddle['speed'];
+            return -1 * userPaddle.speed;
         }
         else { return 0; }
     }
 
     // down arrow only
-    else if(!(gameMetrics['upArrow']) && gameMetrics['downArrow'])
+    else if(!(gameMetrics.upArrow) && gameMetrics.downArrow)
     {
         if(paddleCanMove("down"))
         {
-            return userPaddle['speed'];
+            return userPaddle.speed;
         }
         else{ return 0; }
     }
 
     // both up and down arrow pressed;
     // will start moving in direction of most recent key press
-    else if(gameMetrics['upArrow'] && gameMetrics['downArrow'])
+    else if(gameMetrics.upArrow && gameMetrics.downArrow)
     {
-        if(gameMetrics['recentPress'] === 38)
+        if(gameMetrics.recentPress === 38)
         {
             if(paddleCanMove("up"))
             {
-                return -1 * userPaddle['speed'];
+                return -1 * userPaddle.speed;
             }
             else{ return 0; }
         }
 
-        else if(gameMetrics['recentPress'] === 40)
+        else if(gameMetrics.recentPress === 40)
         {
             if(paddleCanMove("down"))
             {
-                return userPaddle['speed'];
+                return userPaddle.speed;
             }
             else{ return 0; }
         }
@@ -275,7 +275,7 @@ function paddleCanMove(direction)
 {
     if(direction === "up")
     {
-        if(userPaddle['top'] <= gameMetrics['boardTop'])
+        if(userPaddle.top <= gameMetrics.boardTop)
         {
             return false;
         }
@@ -287,7 +287,7 @@ function paddleCanMove(direction)
 
     else if(direction === "down")
     {
-        if(userPaddle['top'] >= (gameMetrics['boardBottom'] - userPaddle['height']))
+        if(userPaddle.top >= (gameMetrics.boardBottom - userPaddle.height))
         {
             return false;
         }
@@ -306,53 +306,53 @@ function paddleCanMove(direction)
 function moveAIPaddle()
 {
     // destination position is greater than current position
-    if((aiPaddle['destination'] - aiPaddle['top']) > 0)
+    if((aiPaddle.destination - aiPaddle.top) > 0)
     {
         // if the current position is within one move of the destination position,
         // just move it to the destination position.
-        if((aiPaddle['destination'] - aiPaddle['top']) < aiPaddle['speed'])
+        if((aiPaddle.destination - aiPaddle.top) < aiPaddle.speed)
         {
-            aiPaddle['top'] = aiPaddle['destination'];
-            aiPaddle['moveNow'] = false;
+            aiPaddle.top = aiPaddle.destination;
+            aiPaddle.moveNow = false;
         }
         else
         {
-            aiPaddle['top'] += aiPaddle['speed'];
+            aiPaddle.top += aiPaddle.speed;
         }
     }
 
     // destination position is less than current position
-    else if((aiPaddle['destination'] - aiPaddle['top']) < 0)
+    else if((aiPaddle.destination - aiPaddle.top) < 0)
     {
-        if((aiPaddle['top'] - aiPaddle['destination']) < aiPaddle['speed'])
+        if((aiPaddle.top - aiPaddle.destination) < aiPaddle.speed)
         {
-            aiPaddle['top'] = aiPaddle['destination'];
-            aiPaddle['moveNow'] = false;
+            aiPaddle.top = aiPaddle.destination;
+            aiPaddle.moveNow = false;
         }
         else
         {
-            aiPaddle['top'] -= aiPaddle['speed'];
+            aiPaddle.top -= aiPaddle.speed;
         }
     }
 
     // if the aiPaddle is at the destination, stop moving
-    else if(aiPaddle['top'] === aiPaddle['destination'])
+    else if(aiPaddle.top === aiPaddle.destination)
     {
-        aiPaddle['moveNow'] = false;
+        aiPaddle.moveNow = false;
     }
 
     // if the aiPaddle has gone out of bounds, move it back within the boundaries
-    if(aiPaddle['top'] < 0)
+    if(aiPaddle.top < 0)
     {
-        aiPaddle['top'] = 0;
+        aiPaddle.top = 0;
     }
-    else if(aiPaddle['top'] > 520)
+    else if(aiPaddle.top > 520)
     {
-        aiPaddle['top'] = 520;
+        aiPaddle.top = 520;
     }
 
     // apply changes to aiPaddle element
-    document.getElementById('aiPaddle').style.top = (aiPaddle['top']) + 'px';
+    document.getElementById('aiPaddle').style.top = (aiPaddle.top) + 'px';
 
 }
 
@@ -362,17 +362,17 @@ function moveAIPaddle()
 function checkPaddleCollision()
 {
     // collision with userPaddle
-    if(ball['left'] <= 60 && ball['left'] >= 50){
-        if((ball['top'] + 20) >= userPaddle['top'] && (ball['top'] <= (userPaddle['top'] + 80)))
+    if(ball.left <= 60 && ball.left >= 50){
+        if((ball.top + 20) >= userPaddle.top && (ball.top <= (userPaddle.top + 80)))
         {
-            aiPaddle['moveNow'] = true;
+            aiPaddle.moveNow = true;
             aiPaddleMoveCalculation();
             return true;
         }
     }
 
     // collision with aiPaddle
-    else if(ball['left'] >= 1020 && ball['left'] <= 1050 && (((ball['top'] + 20) >= aiPaddle['top']) && (ball['top'] < (aiPaddle['top'] + 80))))
+    else if(ball.left >= 1020 && ball.left <= 1050 && (((ball.top + 20) >= aiPaddle.top) && (ball.top < (aiPaddle.top + 80))))
     {
         return true;
     }
@@ -391,13 +391,13 @@ function aiPaddleMoveCalculation()
     var a = 0;
     var aiTop = 0;
 
-    if(ball['directionY'] < 0)
+    if(ball.directionY < 0)
     {
-        a = ball['top'] + 10;
+        a = ball.top + 10;
     }
     else
     {
-        a = 600 - (ball['top'] + 10);
+        a = 600 - (ball.top + 10);
     }
 
     // calculate bounces
@@ -407,24 +407,24 @@ function aiPaddleMoveCalculation()
     if(b > 1040) // one bounce, one mirror
     {
         var short = b - 1040;
-        if(ball['directionY'] > 0)
+        if(ball.directionY > 0)
         {
-            aiPaddle['destination'] = short - 40;
+            aiPaddle.destination = short - 40;
         }
         else
         {
-            aiPaddle['destination'] = 600 - short - 40;
+            aiPaddle.destination = 600 - short - 40;
         }
     }
     else if(b < 1040) // two bounces, two mirrors
     {
-        if(ball['directionY'] > 0)
+        if(ball.directionY > 0)
         {
-            aiPaddle['destination'] = c - 40;
+            aiPaddle.destination = c - 40;
         }
         else
         {
-            aiPaddle['destination'] = 600 - c - 40;
+            aiPaddle.destination = 600 - c - 40;
         }
 
     }
@@ -451,38 +451,38 @@ function moveBall()
     // if collision with paddle, flip X direction
     if(checkPaddleCollision())
     {
-        ball['directionX'] = -1 * ball['directionX'];
-        ball['top'] += ball['directionY'];
-        ball['left'] += ball['directionX'];
+        ball.directionX = -1 * ball.directionX;
+        ball.top += ball.directionY;
+        ball.left += ball.directionX;
     }
 
     // ball collides with top or bottom of game boundary
-    else if(ball['top'] <= gameMetrics['boardTop'] || ball['top'] >= (gameMetrics['boardBottom'] - ball['height']))
+    else if(ball.top <= gameMetrics.boardTop || ball.top >= (gameMetrics.boardBottom - ball.height))
     {
-        ball['directionY'] = -1 * ball['directionY'];
-        ball['top'] += ball['directionY'];
-        ball['left'] += ball['directionX'];
+        ball.directionY = -1 * ball.directionY;
+        ball.top += ball.directionY;
+        ball.left += ball.directionX;
     }
 
     // out of bounds to the left, score for aiPaddle
-    else if(ball['left'] < 0)
+    else if(ball.left < 0)
     {
-        if(!(gameMetrics['changingUI'])){ goalScored("ai"); }  // animations
+        if(!(gameMetrics.changingUI)){ goalScored("ai"); }  // animations
     }
 
     // out of bounds to the right, score for userPaddle
-    else if(ball['left'] > 1080)
+    else if(ball.left > 1080)
     {
-        if(!(gameMetrics['changingUI'])){ goalScored("user"); } // animations
+        if(!(gameMetrics.changingUI)){ goalScored("user"); } // animations
     }
 
     // update top and left positions
-    ball['top'] += ball['directionY'];
-    ball['left'] += ball['directionX'];
+    ball.top += ball.directionY;
+    ball.left += ball.directionX;
 
     // apply position changes to element
-    document.getElementById('ball').style.top = (ball['top']) + 'px';
-    document.getElementById('ball').style.left = (ball['left']) + 'px';
+    document.getElementById('ball').style.top = (ball.top) + 'px';
+    document.getElementById('ball').style.left = (ball.left) + 'px';
 
 }
 
@@ -496,23 +496,23 @@ function moveBall()
 function goalScored(player)
 {
     // makes sure this function is not called again while animating
-    gameMetrics['changingUI'] = true;
+    gameMetrics.changingUI = true;
 
     // change player's score
     gameMetrics[player+'Score'] += 1;
 
     // animations to retrieve ball after a goal
     $('#ball').fadeOut(200, function(){
-        ball['moving'] = false;
-        ball['top'] = 290;
-        ball['left'] = 540;
+        ball.moving = false;
+        ball.top = 290;
+        ball.left = 540;
 
-        ball['directionX'] = -1 * ball['speed'];
-        ball['directionY'] = (Math.random() < 0.5 ? -1 : 1) * ball['speed'];
+        ball.directionX = -1 * ball.speed;
+        ball.directionY = (Math.random() < 0.5 ? -1 : 1) * ball.speed;
 
         // return ball to middle of table
-        document.getElementById('ball').style.top = (ball['top']) + 'px';
-        document.getElementById('ball').style.left = (ball['left']) + 'px';
+        document.getElementById('ball').style.top = (ball.top) + 'px';
+        document.getElementById('ball').style.left = (ball.left) + 'px';
         $('#ball').delay(800).fadeIn();
     });
 
@@ -538,7 +538,7 @@ function scoreFade(player)
                         document.getElementById(player+'Score').style.color = 'white';
                         document.getElementById(player+'Score').innerHTML = gameMetrics[player+'Score'];
                         $('#'+player+'Score').fadeIn(function(){
-                            gameMetrics['changingUI'] = false; // all done with UI changes
+                            gameMetrics.changingUI = false; // all done with UI changes
                         });
                     });
                 });
