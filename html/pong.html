@@ -1,0 +1,56 @@
+<DOCTYPE html>
+
+<html>
+
+<head>
+    <title>PONG</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="../css/introScreen.css">
+    <link rel="stylesheet" href="../css/scoreBoard.css">
+    <link rel="stylesheet" href="../css/pongTable.css">
+    <link rel="stylesheet" href="../css/gamePieces.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../js/pong.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:700|Orbitron:900" rel="stylesheet">
+</head>
+
+<body>
+    <div id='introScreen'>
+        <div id='welcomeText'>Welcome to PONG!</div>
+        <div id='startInst'>To start the game, simply press the <span style='color: #70cdff;'>SPACE</span> key.</div>
+        <div id='moveInstr'>Your paddle can be moved up or down with the <span style='color: #70cdff;'>UP</span> or <span style='color: #70cdff;'>DOWN</span> arrows.</div>
+        <div id='goButtonContainer'>
+            <button type="button" class="btn btn-success btn-lg" id='' onclick='startGame()'>Lets Play</button>
+        </div>
+    </div>
+
+    <div id='scoreBoard'>
+        <div class='scoreAttr' id='userTitle'>USER</div>
+        <div class='scoreAttr' id='userScore'>0</div>
+        <div id='gameTitle'>PONG</div>
+        <div class='scoreAttr' id='aiTitle'>AI BOT</div>
+        <div class='scoreAttr' id='aiScore'>0</div>
+    </div>
+
+    <div id='gameBoard'>
+        <div class='divider' id='dividerTop'></div>
+        <div class='divider' id='dividerBottom'></div>
+
+        <div class='paddle' id='userPaddle'></div>
+        <div class='paddle' id='aiPaddle'></div>
+
+        <div id='ball'></div>
+
+        <div class='goalMask' id='userMask'></div>
+        <div class='goalMask' id='aiMask'></div>
+    </div>
+    <div id='myName'>Made by Ryan Fritsch</div>
+</body>
+
+</html>

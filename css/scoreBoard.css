@@ -1,0 +1,89 @@
+
+#scoreBoard
+{
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 550px);
+    width: 1100px;
+    height: 80px;
+}
+
+.scoreAttr
+{
+    line-height: 95px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+#userTitle
+{
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 480px);
+    width: 200px;
+    height: 80px;
+    color: white;
+    text-align: right;
+    font-size: 40px;
+    display: none;
+
+}
+
+#userScore
+{
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 280px);
+    width: 100px;
+    height: 80px;
+    color: white;
+    text-align: center;
+    font-size: 45px;
+    display: none;
+
+}
+
+#gameTitle
+{
+    width: 260px;
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 130px);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    line-height: 95px;
+    display: none;
+
+}
+
+#aiTitle
+{
+    position: absolute;
+    top: 0px;
+    left: calc(50% + 180px);
+    width: 200px;
+    height: 80px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    display: none;
+
+}
+
+#aiScore
+{
+    position: absolute;
+    top: 0px;
+    left: calc(50% + 380px);
+    width: 100px;
+    height: 80px;
+    color: white;
+    text-align: left;
+    font-size: 45px;
+    display: none;
+
+}

@@ -1,0 +1,58 @@
+
+
+#welcomeText
+{
+    position: absolute;
+    height: 100px;
+    width: 1000px;
+    top: 50px;
+    left: calc(50% - 500px);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    display: none;
+
+}
+
+#startInst
+{
+    position: absolute;
+    height: 100px;
+    width: 1000px;
+    top: 220px;
+    left: calc(50% - 500px);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    display: none;
+
+}
+
+#moveInstr
+{
+    position: absolute;
+    height: 100px;
+    width: 1000px;
+    top: 370px;
+    left: calc(50% - 500px);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    display: none;
+
+}
+
+#goButtonContainer
+{
+    position: absolute;
+    top: 550px;
+    height: 100px;
+    width: 150px;
+    left: calc(50% - 75px);
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    display: none;
+}

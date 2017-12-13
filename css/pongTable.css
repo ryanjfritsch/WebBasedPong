@@ -1,0 +1,100 @@
+
+body
+{
+    background-color: #212121;
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
+
+
+#gameBoard
+{
+    width: 1100px;
+    height: 600px;
+    background-color: #212121;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: white;
+    position: absolute;
+    top: 80px;
+    left: calc(50% - 550px);
+    display: none;
+}
+
+.dividerTop
+{
+    border-left: 1px;
+    border-color: grey;
+}
+
+#dividerTop
+{
+    position: absolute;
+    top: 0px;
+    width: 1px;
+    height: 200px;
+    left: 550px;
+    border-right: 1px solid;
+    border-color: grey;
+}
+
+#dividerBottom
+{
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 200px;
+    left: 550px;
+    border-right: 1px solid;
+    border-color: grey;
+}
+
+
+#logo
+{
+    width: 400px;
+    height: 178px;
+    left: 350px;
+    top: 200px;
+    position: absolute;
+    opacity: 0.3;
+}
+
+.goalMask
+{
+    background-color: #25ff11;
+    position: absolute;
+    top: 0px;
+    width: 550px;
+    height: 600px;
+    z-index: 100;
+}
+
+#userMask
+{
+    left: 0px;
+    display: none;
+
+}
+
+#aiMask
+{
+    right: 0px;
+    display: none;
+
+}
+
+#myName
+{
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    top: 700px;
+    left: calc(50% - 100px);
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    color: grey;
+}
